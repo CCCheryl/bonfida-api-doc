@@ -278,3 +278,47 @@ Provides a list of all market fills from the last 24 hours on the Serum DEX
 | Parameter  | Description                                                   |
 | ---------- | ------------------------------------------------------------- |
 | marketName | The name of the market address you want to retrieve data from |
+
+## Get pools
+
+```shell
+curl "https://serum-api.bonfida.com/pools"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "USDT/SOL",
+      "pool_identifier": "H2mJpdQTBcsfGUJvVJjRpPd95RKf2stDadJnR3Mf2qq7",
+      "liquidity_locked": 190685.5960057655,
+      "apy": 0.06389282452440433,
+      "volume": 57038.58298187185,
+      "mints": [
+        "BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4",
+        "So11111111111111111111111111111111111111112"
+      ],
+      "liquidityA": 95928.930894,
+      "liquidityAinUsd": 95928.930894,
+      "liquidityB": 61912.228103081,
+      "liquidityBinUsd": 94756.66511176547,
+      "supply": 10.0216061,
+      "fees": 171.11574894561554,
+      "time": 1604204796661
+    }
+  ]
+}
+```
+
+Provides data about Serum pools over the last 24 hours. A new data point is added every 30 minutes for each pool
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/pools`
+
+The following endpoint returns the latest update:
+
+`GET https://serum-api.bonfida.com/pools-recent`

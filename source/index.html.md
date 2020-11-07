@@ -7,9 +7,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://bonfida.com'>Bonfida</a>
 
-includes:
-  - errors
-
 search: true
 
 code_clipboard: true

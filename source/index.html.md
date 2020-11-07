@@ -322,3 +322,46 @@ Provides data about Serum pools over the last 24 hours. A new data point is adde
 The following endpoint returns the latest update:
 
 `GET https://serum-api.bonfida.com/pools-recent`
+
+## Get pool trades
+
+```shell
+curl "https://serum-api.bonfida.com/pools/trades?symbolSource=BTC&symbolDestination=USDC&bothDirections=true"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "signature": "XaaGc8DKMza8uBfNMA5GzXATF1nz9cJMSnxPqRExzk4GG5ADhddsKi6mfeBAq3vd9G2GAUoAouEGnbgHrVw6Unb",
+      "symbolSource": "BTC",
+      "poolSourceMint": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+      "symbolDestination": "USDC",
+      "poolDestinationMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "amountIn": 0.006892,
+      "amountOut": 79.564554,
+      "poolMintAuthority": "5W46iojjAEWk56oDUFL7FSyaqJEY7SvWvEZxBS38Daix",
+      "time": 1604761992156
+    }
+  ]
+}
+```
+
+Provides a list of all trades fills from the last 24 hours on the Serum Swap
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/pools/trades`
+
+### URL Parameters
+
+| Parameter         | Description                                        |
+| ----------------- | -------------------------------------------------- |
+| symbolSource      | `optional` Source coin of the swap                 |
+| symbolDestination | `optional` Destination coin of the swap            |
+| bothDirections    | `optional` To retrieve trades from both directions |
+
+If no parameters are given it will return all trades from the last 24 hours

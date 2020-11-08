@@ -362,3 +362,101 @@ Provides a list of all trades fills from the last 24 hours on the Serum Swap
 | bothDirections    | `optional` To retrieve trades from both directions |
 
 If no parameters are given it will return all trades from the last 24 hours
+
+# Exchanges
+
+REST endpoint URL: `https://bonfida.com/api`
+
+## Get order placement latencies
+
+```shell
+curl "https://bonfida.com/api/latency-order"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  { "exchange": "bybit", "latency": 132578, "lastUpdate": 1604804743 },
+  { "exchange": "ftx", "latency": 78446, "lastUpdate": 1604804743 },
+  { "exchange": "binance", "latency": 29762, "lastUpdate": 1604804743 },
+  { "exchange": "bitmex", "latency": 829601, "lastUpdate": 1604804743 }
+]
+```
+
+Returns the last latency measure for order placement through REST API for Bybit, FTX, Binance and Bitmex. The latency is measured from `AWS Tokyo`.
+
+The following endpoints measure from different AWS locations:
+
+- AWS Dublin: `https://dublin.bonfida.com/api/latency-order`
+- AWS Virginia: `https://virginia.bonfida.com/api/latency-order`
+
+### HTTP Request
+
+`GET https://bonfida.com/api/latency-order`
+
+## Get open interests
+
+```shell
+curl "https://bonfida.com/api/open-interest"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "exchange": "deribit",
+    "openInterest": 183565810,
+    "lastUpdate": 1604802624
+  },
+  {
+    "exchange": "bybit",
+    "openInterest": 557734465.52,
+    "lastUpdate": 1604802624
+  },
+  { "exchange": "huobi", "openInterest": 207408300, "lastUpdate": 1604802624 },
+  {
+    "exchange": "binance",
+    "openInterest": 591827555.328125,
+    "lastUpdate": 1604802624
+  },
+  { "exchange": "okex", "openInterest": 142929500, "lastUpdate": 1604802624 },
+  { "exchange": "bitmex", "openInterest": 357241514, "lastUpdate": 1604802624 },
+  {
+    "exchange": "ftx",
+    "openInterest": 214813290.58319998,
+    "lastUpdate": 1604802624
+  }
+]
+```
+
+Returns the open interest of Deribit, Bybit, Okex and FTX.
+
+### HTTP Request
+
+`GET https://bonfida.com/api/open-interest`
+
+## Get BTC implied volatility
+
+```shell
+curl "https://bonfida.com/api/vol/today"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+0.6514701843261719
+```
+
+Returns the BTC implied volatility.
+
+### HTTP Request
+
+`GET https://bonfida.com/api/vol/{time}`
+
+### URL Parameters
+
+| Parameter | Description                                   |
+| --------- | --------------------------------------------- |
+| time      | `today`, `tomorrow`, `this-week`, `next-week` |

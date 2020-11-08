@@ -1,0 +1,801 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Bonfida API</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e033bdd3.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-f9395efa.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#project-serum" class="toc-h1 toc-link" data-title="Project Serum">Project Serum</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-pairs" class="toc-h2 toc-link" data-title="Get all pairs">Get all pairs</a>
+                  </li>
+                  <li>
+                    <a href="#get-recent-trades-by-market-name" class="toc-h2 toc-link" data-title="Get recent trades by market name">Get recent trades by market name</a>
+                  </li>
+                  <li>
+                    <a href="#get-recent-trades-by-market-address" class="toc-h2 toc-link" data-title="Get recent trades by market address">Get recent trades by market address</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-recent-trades" class="toc-h2 toc-link" data-title="Get all recent trades">Get all recent trades</a>
+                  </li>
+                  <li>
+                    <a href="#get-volume" class="toc-h2 toc-link" data-title="Get volume">Get volume</a>
+                  </li>
+                  <li>
+                    <a href="#get-orderbook" class="toc-h2 toc-link" data-title="Get orderbook">Get orderbook</a>
+                  </li>
+                  <li>
+                    <a href="#get-pools" class="toc-h2 toc-link" data-title="Get pools">Get pools</a>
+                  </li>
+                  <li>
+                    <a href="#get-pool-trades" class="toc-h2 toc-link" data-title="Get pool trades">Get pool trades</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#exchanges" class="toc-h1 toc-link" data-title="Exchanges">Exchanges</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-order-placement-latencies" class="toc-h2 toc-link" data-title="Get order placement latencies">Get order placement latencies</a>
+                  </li>
+                  <li>
+                    <a href="#get-open-interests" class="toc-h2 toc-link" data-title="Get open interests">Get open interests</a>
+                  </li>
+                  <li>
+                    <a href="#get-btc-implied-volatility" class="toc-h2 toc-link" data-title="Get BTC implied volatility">Get BTC implied volatility</a>
+                  </li>
+                  <li>
+                    <a href="#get-long-and-short-ratios" class="toc-h2 toc-link" data-title="Get long and short ratios">Get long and short ratios</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://bonfida.com'>Bonfida</a></li>
+            <li><a href='https://bonfida.com/dex'>Bonfida DEX</a></li>
+            <li><a href='https://bonfida.com/wallet'>Bonfida Wallet</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Bonfida API! You can use our API to access <a href="https://projectserum.com">Serum DEX</a> data and other crypto market analytics.</p>
+<h1 id='project-serum'>Project Serum</h1>
+<p>For more information about Serum visit <a href="https://projectserum.com">Project Serum</a></p>
+
+<p>REST endpoint URL: <code>https://serum-api.bonfida.com</code></p>
+<h2 id='get-all-pairs'>Get all pairs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pairs"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"ALEPH/USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ALEPH/WUSDC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BTC/USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BTC/WUSDC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ETH/USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ETH/WUSDC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SOL/USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SOL/WUSDC"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a list of all trading pairs on the Serum DEX.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/pairs</code></p>
+<h2 id='get-recent-trades-by-market-name'>Get recent trades by market name</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/trades/ETHUSDT"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH/USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">451.51</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1604767562476.2188</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"833220983065386731245551"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.225755</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5abZGhrELnUnfM9ZUnvK6XJPoBU5eShZwfFPkdhAC7o"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a list of all market fills from the last 24 hours on the Serum DEX.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/trades/{marketName}</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketName</td>
+<td>The name of the market you want to retrieve data from</td>
+</tr>
+</tbody></table>
+<h2 id='get-recent-trades-by-market-address'>Get recent trades by market address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/trades/address/5abZGhrELnUnfM9ZUnvK6XJPoBU5eShZwfFPkdhAC7o"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH/USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">451.51</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1604767562476.2188</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"833220983065386731245551"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.225755</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5abZGhrELnUnfM9ZUnvK6XJPoBU5eShZwfFPkdhAC7o"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a list of all market fills from the last 24 hours on the Serum DEX.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/trades/address/{marketAddress}</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketAddress</td>
+<td>The market address you want to retrieve data from</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-recent-trades'>Get all recent trades</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/trades"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH/USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">451.51</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1604767562476.2188</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"833220983065386731245551"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.225755</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5abZGhrELnUnfM9ZUnvK6XJPoBU5eShZwfFPkdhAC7o"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a list of all market fills from the last 24 hours on the Serum DEX.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/trades</code></p>
+<h2 id='get-volume'>Get volume</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/volumes/ETHUSDT"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"volumeUsd"</span><span class="p">:</span><span class="w"> </span><span class="mf">377446.7586900001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">835.2339999999999</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a view of rolling 24 hour volume on the Serum DEX - use ‘all’ as the market for an aggregate of traded volume across all markets.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/volumes/{marketName}</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketName</td>
+<td>The name of the market you want to retrieve data from</td>
+</tr>
+</tbody></table>
+<h2 id='get-orderbook'>Get orderbook</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/orderbooks/ETHUSDT"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH/USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">452.77</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">452.71</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">452.17</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">451.98</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">184.238</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">451.64</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">221.099</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">450.6</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">449.94</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">228.41</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">449.9</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">232.205</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">449</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">295.667</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">448.66</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">412.566</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">446.04</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">468.99</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">446</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">644.819</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">443.78</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">536.219</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">436.98</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">700.985</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">399.19</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">453.19</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">105.534</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">453.41</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">453.49</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">114.203</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">453.7</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">454.1</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">454.77</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.047</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">454.87</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">455.36</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.251</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">455.38</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.013</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">455.99</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">158.496</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">457.16</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.004</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">457.35</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.004</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">457.87</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">201.712</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">457.98</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">280.23</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">458.71</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">340.135</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">459.39</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">256.345</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">459.56</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">460.36</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">317.861</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">460.41</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.029</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.14</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.41</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.43</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.45</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.89</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.92</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">340.802</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">461.98</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">462.11</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">462.22</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">462.68</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">462.8</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">462.9</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">468.001</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">464.43</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.022</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">468.8</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.052</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">469.79</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">479.23</span><span class="p">,</span><span class="w"> </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.196</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"marketAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5abZGhrELnUnfM9ZUnvK6XJPoBU5eShZwfFPkdhAC7o"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides the current orderbook of the market.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/orderbooks/{marketName}</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketName</td>
+<td>The name of the market you want to retrieve data from</td>
+</tr>
+</tbody></table>
+<h2 id='get-pools'>Get pools</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT/SOL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pool_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H2mJpdQTBcsfGUJvVJjRpPd95RKf2stDadJnR3Mf2qq7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidity_locked"</span><span class="p">:</span><span class="w"> </span><span class="mf">190685.5960057655</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06389282452440433</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">57038.58298187185</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"So11111111111111111111111111111111111111112"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"liquidityA"</span><span class="p">:</span><span class="w"> </span><span class="mf">95928.930894</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityAinUsd"</span><span class="p">:</span><span class="w"> </span><span class="mf">95928.930894</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityB"</span><span class="p">:</span><span class="w"> </span><span class="mf">61912.228103081</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityBinUsd"</span><span class="p">:</span><span class="w"> </span><span class="mf">94756.66511176547</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0216061</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fees"</span><span class="p">:</span><span class="w"> </span><span class="mf">171.11574894561554</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604204796661</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides data about Serum pools over the last 24 hours. A new data point is added every 30 minutes for each pool.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/pools</code></p>
+
+<p>The following endpoint returns the most recent data points:</p>
+
+<p><code>GET https://serum-api.bonfida.com/pools-recent</code></p>
+<h2 id='get-pool-trades'>Get pool trades</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools/trades?symbolSource=BTC&amp;symbolDestination=USDC&amp;bothDirections=true"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XaaGc8DKMza8uBfNMA5GzXATF1nz9cJMSnxPqRExzk4GG5ADhddsKi6mfeBAq3vd9G2GAUoAouEGnbgHrVw6Unb"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbolSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"poolSourceMint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbolDestination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"poolDestinationMint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountIn"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.006892</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOut"</span><span class="p">:</span><span class="w"> </span><span class="mf">79.564554</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"poolMintAuthority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5W46iojjAEWk56oDUFL7FSyaqJEY7SvWvEZxBS38Daix"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604761992156</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a list of all trades fills from the last 24 hours on the Serum Swap</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/pools/trades</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbolSource</td>
+<td><code>optional</code> Source coin of the swap</td>
+</tr>
+<tr>
+<td>symbolDestination</td>
+<td><code>optional</code> Destination coin of the swap</td>
+</tr>
+<tr>
+<td>bothDirections</td>
+<td><code>optional</code> To retrieve trades from both directions</td>
+</tr>
+</tbody></table>
+
+<p>If no parameters are given it will return all trades from the last 24 hours</p>
+<h1 id='exchanges'>Exchanges</h1>
+<p>REST endpoint URL: <code>https://bonfida.com/api</code></p>
+<h2 id='get-order-placement-latencies'>Get order placement latencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/latency-order"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bybit"</span><span class="p">,</span><span class="w"> </span><span class="nl">"latency"</span><span class="p">:</span><span class="w"> </span><span class="mi">132578</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604804743</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ftx"</span><span class="p">,</span><span class="w"> </span><span class="nl">"latency"</span><span class="p">:</span><span class="w"> </span><span class="mi">78446</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604804743</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w"> </span><span class="nl">"latency"</span><span class="p">:</span><span class="w"> </span><span class="mi">29762</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604804743</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmex"</span><span class="p">,</span><span class="w"> </span><span class="nl">"latency"</span><span class="p">:</span><span class="w"> </span><span class="mi">829601</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604804743</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Returns the last latency measured for order placement through REST API for Bybit, FTX, Binance and Bitmex. The latency is measured from <code>AWS Tokyo</code>.</p>
+
+<p>The following endpoints measure from different AWS locations:</p>
+
+<ul>
+<li>AWS Dublin: <code>https://dublin.bonfida.com/api/latency-order</code></li>
+<li>AWS Virginia: <code>https://virginia.bonfida.com/api/latency-order</code></li>
+</ul>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://bonfida.com/api/latency-order</code></p>
+<h2 id='get-open-interests'>Get open interests</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/open-interest"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deribit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">183565810</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bybit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mf">557734465.52</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"huobi"</span><span class="p">,</span><span class="w"> </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">207408300</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mf">591827555.328125</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w"> </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">142929500</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmex"</span><span class="p">,</span><span class="w"> </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">357241514</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ftx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="mf">214813290.58319998</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604802624</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Returns the open interest of Deribit, Bybit, Okex and FTX.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://bonfida.com/api/open-interest</code></p>
+<h2 id='get-btc-implied-volatility'>Get BTC implied volatility</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/vol/today"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="mf">0.6514701843261719</span><span class="w">
+</span></code></pre></div>
+<p>Returns the BTC implied volatility.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://bonfida.com/api/vol/{time}</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td><code>today</code>, <code>tomorrow</code>, <code>this-week</code>, <code>next-week</code></td>
+</tr>
+</tbody></table>
+<h2 id='get-long-and-short-ratios'>Get long and short ratios</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/long-short-ratio?exchange=ftx&amp;market=BTC-PERP"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"longRatio"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4852245862884161</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604805231</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns long and short ratios for the specified exchange and specified market</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET https://bonfida.com/api/long-short-ratio?exchange={exchange}&amp;market={market}</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>Exchange from which you want the ratio (only FTX, Bybit, Binance and Phemex are supported)</td>
+</tr>
+<tr>
+<td>market</td>
+<td>market from which you want the ratio (e.g BTC-PERP)</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

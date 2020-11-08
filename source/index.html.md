@@ -18,6 +18,8 @@ code_clipboard: true
 
 Welcome to the Bonfida API! You can use our API to access [Serum DEX](https://projectserum.com) data and other crypto market analytics.
 
+The current rate limit is 30 requests per second - please reach out if you’re building something and need a higher limit.
+
 # Project Serum
 
 For more information about Serum visit [Project Serum](https://projectserum.com)

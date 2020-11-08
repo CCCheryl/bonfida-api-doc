@@ -16,7 +16,7 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Bonfida API! You can use our API to access Serum DEX data and other crypto market analytics.
+Welcome to the Bonfida API! You can use our API to access [Serum DEX](https://projectserum.com) data and other crypto market analytics.
 
 # Project Serum
 
@@ -80,7 +80,7 @@ curl "https://serum-api.bonfida.com/trades/ETHUSDT"
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX
+Provides a list of all market fills from the last 24 hours on the Serum DEX.
 
 ### HTTP Request
 
@@ -118,7 +118,7 @@ curl "https://serum-api.bonfida.com/trades/address/5abZGhrELnUnfM9ZUnvK6XJPoBU5e
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX
+Provides a list of all market fills from the last 24 hours on the Serum DEX.
 
 ### HTTP Request
 
@@ -156,7 +156,7 @@ curl "https://serum-api.bonfida.com/trades"
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX
+Provides a list of all market fills from the last 24 hours on the Serum DEX.
 
 ### HTTP Request
 
@@ -182,7 +182,7 @@ curl "https://serum-api.bonfida.com/volumes/ETHUSDT"
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX
+Provides a view of rolling 24 hour volume on the Serum DEX - use ‘all’ as the market for an aggregate of traded volume across all markets.
 
 ### HTTP Request
 
@@ -190,9 +190,9 @@ Provides a list of all market fills from the last 24 hours on the Serum DEX
 
 ### URL Parameters
 
-| Parameter  | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
-| marketName | The name of the market address you want to retrieve data from |
+| Parameter  | Description                                           |
+| ---------- | ----------------------------------------------------- |
+| marketName | The name of the market you want to retrieve data from |
 
 ## Get orderbook
 
@@ -266,7 +266,7 @@ curl "https://serum-api.bonfida.com/orderbooks/ETHUSDT"
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX
+Provides the current orderbook of the market.
 
 ### HTTP Request
 
@@ -274,9 +274,9 @@ Provides a list of all market fills from the last 24 hours on the Serum DEX
 
 ### URL Parameters
 
-| Parameter  | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
-| marketName | The name of the market address you want to retrieve data from |
+| Parameter  | Description                                           |
+| ---------- | ----------------------------------------------------- |
+| marketName | The name of the market you want to retrieve data from |
 
 ## Get pools
 
@@ -312,13 +312,13 @@ curl "https://serum-api.bonfida.com/pools"
 }
 ```
 
-Provides data about Serum pools over the last 24 hours. A new data point is added every 30 minutes for each pool
+Provides data about Serum pools over the last 24 hours. A new data point is added every 30 minutes for each pool.
 
 ### HTTP Request
 
 `GET https://serum-api.bonfida.com/pools`
 
-The following endpoint returns the latest update:
+The following endpoint returns the most recent data points:
 
 `GET https://serum-api.bonfida.com/pools-recent`
 
@@ -386,7 +386,7 @@ curl "https://bonfida.com/api/latency-order"
 ]
 ```
 
-Returns the last latency measure for order placement through REST API for Bybit, FTX, Binance and Bitmex. The latency is measured from `AWS Tokyo`.
+Returns the last latency measured for order placement through REST API for Bybit, FTX, Binance and Bitmex. The latency is measured from `AWS Tokyo`.
 
 The following endpoints measure from different AWS locations:
 
@@ -475,7 +475,7 @@ curl "https://bonfida.com/api/long-short-ratio?exchange=ftx&market=BTC-PERP"
 { "longRatio": 0.4852245862884161, "lastUpdate": 1604805231 }
 ```
 
-Returns long and short rations for the specified exchange and specified market
+Returns long and short ratios for the specified exchange and specified market
 
 ### HTTP Request
 

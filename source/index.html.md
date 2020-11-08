@@ -1,11 +1,13 @@
 ---
-title: API Reference
+title: Bonfida API
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
   - <a href='https://bonfida.com'>Bonfida</a>
+  - <a href='https://bonfida.com/dex'>Bonfida DEX</a>
+  - <a href='https://bonfida.com/wallet'>Bonfida Wallet</a>
 
 search: true
 
@@ -460,3 +462,28 @@ Returns the BTC implied volatility.
 | Parameter | Description                                   |
 | --------- | --------------------------------------------- |
 | time      | `today`, `tomorrow`, `this-week`, `next-week` |
+
+## Get long and short ratios
+
+```shell
+curl "https://bonfida.com/api/long-short-ratio?exchange=ftx&market=BTC-PERP"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{ "longRatio": 0.4852245862884161, "lastUpdate": 1604805231 }
+```
+
+Returns long and short rations for the specified exchange and specified market
+
+### HTTP Request
+
+`GET https://bonfida.com/api/long-short-ratio?exchange={exchange}&market={market}`
+
+### URL Parameters
+
+| Parameter | Description                                                                                |
+| --------- | ------------------------------------------------------------------------------------------ |
+| exchange  | Exchange from which you want the ratio (only FTX, Bybit, Binance and Phemex are supported) |
+| market    | market from which you want the ratio (e.g BTC-PERP)                                        |

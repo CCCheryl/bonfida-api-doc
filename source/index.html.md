@@ -367,6 +367,24 @@ Provides a list of all trades fills from the last 24 hours on the Serum Swap
 
 If no parameters are given it will return all trades from the last 24 hours
 
+## Get pools volume
+
+```shell
+curl "https://serum-api.bonfida.com/pools/volumes/recent"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{ "success": true, "data": [{ "volume": 408399.18767858105 }] }
+```
+
+Provides a view of rolling 24 hour volume on the Serum Swap
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/pools/volumes/recent`
+
 # Exchanges
 
 REST endpoint URL: `https://bonfida.com/api`

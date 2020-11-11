@@ -335,6 +335,9 @@
                   <li>
                     <a href="#get-pool-trades" class="toc-h2 toc-link" data-title="Get pool trades">Get pool trades</a>
                   </li>
+                  <li>
+                    <a href="#get-pools-volume" class="toc-h2 toc-link" data-title="Get pools volume">Get pools volume</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -685,6 +688,16 @@
 </tbody></table>
 
 <p>If no parameters are given it will return all trades from the last 24 hours</p>
+<h2 id='get-pools-volume'>Get pools volume</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools/volumes/recent"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">408399.18767858105</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides a view of rolling 24 hour volume on the Serum Swap</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/pools/volumes/recent</code></p>
 <h1 id='exchanges'>Exchanges</h1>
 <p>REST endpoint URL: <code>https://bonfida.com/api</code></p>
 <h2 id='get-order-placement-latencies'>Get order placement latencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/latency-order"</span>
@@ -707,7 +720,7 @@
 <li>AWS Dublin: <code>https://dublin.bonfida.com/api/latency-order</code></li>
 <li>AWS Virginia: <code>https://virginia.bonfida.com/api/latency-order</code></li>
 </ul>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/latency-order</code></p>
 <h2 id='get-open-interests'>Get open interests</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/open-interest"</span>
 </code></pre></div>
@@ -741,7 +754,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>Returns the open interest of Deribit, Bybit, Okex and FTX.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/open-interest</code></p>
 <h2 id='get-btc-implied-volatility'>Get BTC implied volatility</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/vol/today"</span>
 </code></pre></div>
@@ -751,7 +764,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mf">0.6514701843261719</span><span class="w">
 </span></code></pre></div>
 <p>Returns the BTC implied volatility.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/vol/{time}</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -773,7 +786,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"longRatio"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4852245862884161</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604805231</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns long and short ratios for the specified exchange and specified market</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/long-short-ratio?exchange={exchange}&amp;market={market}</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>

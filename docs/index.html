@@ -330,6 +330,9 @@
                     <a href="#get-orderbook" class="toc-h2 toc-link" data-title="Get orderbook">Get orderbook</a>
                   </li>
                   <li>
+                    <a href="#get-historical-prices" class="toc-h2 toc-link" data-title="Get historical prices">Get historical prices</a>
+                  </li>
+                  <li>
                     <a href="#get-pools" class="toc-h2 toc-link" data-title="Get pools">Get pools</a>
                   </li>
                   <li>
@@ -605,6 +608,66 @@
 <td>The name of the market you want to retrieve data from</td>
 </tr>
 </tbody></table>
+<h2 id='get-historical-prices'>Get historical prices</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/candles/BTCUSDC?resolution=3600"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">16001.05</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">15942.05</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">15942.05</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">16013.3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605416400000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC/USDC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volumeBase"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volumeQuote"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">15942.05</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">15949.95</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">15899.1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">15978.5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605412800000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC/USDC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volumeBase"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volumeQuote"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/candles/{marketName}?resolution={resolution}&amp;startTime={startTime}&amp;endTime={endTime}&amp;limit={limit}</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketName</td>
+<td>The name of the market you want to retrieve data from</td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>Window length in seconds. options: 60, 3600, 14400, 86400</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Optional (in ms)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Optional (in ms)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Optional. Max 1000</td>
+</tr>
+</tbody></table>
 <h2 id='get-pools'>Get pools</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools"</span>
 </code></pre></div>
 <blockquote>
@@ -635,7 +698,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Provides data about Serum pools over the last 24 hours. A new data point is added every 30 minutes for each pool.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://serum-api.bonfida.com/pools</code></p>
 
 <p>The following endpoint returns the most recent data points:</p>
@@ -664,9 +727,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Provides a list of all trades fills from the last 24 hours on the Serum Swap</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://serum-api.bonfida.com/pools/trades</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -696,7 +759,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">408399.18767858105</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Provides a view of rolling 24 hour volume on the Serum Swap</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://serum-api.bonfida.com/pools/volumes/recent</code></p>
 <h1 id='exchanges'>Exchanges</h1>
 <p>REST endpoint URL: <code>https://bonfida.com/api</code></p>
@@ -720,7 +783,7 @@
 <li>AWS Dublin: <code>https://dublin.bonfida.com/api/latency-order</code></li>
 <li>AWS Virginia: <code>https://virginia.bonfida.com/api/latency-order</code></li>
 </ul>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/latency-order</code></p>
 <h2 id='get-open-interests'>Get open interests</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/open-interest"</span>
 </code></pre></div>
@@ -754,7 +817,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>Returns the open interest of Deribit, Bybit, Okex and FTX.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/open-interest</code></p>
 <h2 id='get-btc-implied-volatility'>Get BTC implied volatility</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/vol/today"</span>
 </code></pre></div>
@@ -764,9 +827,9 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mf">0.6514701843261719</span><span class="w">
 </span></code></pre></div>
 <p>Returns the BTC implied volatility.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/vol/{time}</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -786,9 +849,9 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"longRatio"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4852245862884161</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604805231</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns long and short ratios for the specified exchange and specified market</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/long-short-ratio?exchange={exchange}&amp;market={market}</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>

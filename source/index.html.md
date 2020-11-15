@@ -280,6 +280,56 @@ Provides the current orderbook of the market.
 | ---------- | ----------------------------------------------------- |
 | marketName | The name of the market you want to retrieve data from |
 
+## Get historical prices
+
+```shell
+curl "https://serum-api.bonfida.com/candles/BTCUSDC?resolution=3600"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "close": 16001.05,
+      "open": 15942.05,
+      "low": 15942.05,
+      "high": 16013.3,
+      "startTime": 1605416400000,
+      "market": "BTC/USDC",
+      "volumeBase": 0,
+      "volumeQuote": 0
+    },
+    {
+      "close": 15942.05,
+      "open": 15949.95,
+      "low": 15899.1,
+      "high": 15978.5,
+      "startTime": 1605412800000,
+      "market": "BTC/USDC",
+      "volumeBase": 0,
+      "volumeQuote": 0
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/candles/{marketName}?resolution={resolution}&startTime={startTime}&endTime={endTime}&limit={limit}`
+
+### URL Parameters
+
+| Parameter  | Description                                               |
+| ---------- | --------------------------------------------------------- |
+| marketName | The name of the market you want to retrieve data from     |
+| resolution | Window length in seconds. options: 60, 3600, 14400, 86400 |
+| startTime  | Optional (in ms)                                          |
+| endTime    | Optional (in ms)                                          |
+| limit      | Optional. Max 1000                                        |
+
 ## Get pools
 
 ```shell

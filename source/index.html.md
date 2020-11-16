@@ -328,9 +328,9 @@ curl "https://serum-api.bonfida.com/candles/BTCUSDC?resolution=3600"
 | resolution | Window length in seconds. options: 60, 3600, 14400, 86400 |
 | startTime  | Optional (in ms)                                          |
 | endTime    | Optional (in ms)                                          |
-| limit      | Optional. Max 1000                                        |
+| limit      | Optional. Max and default 1000                            |
 
-## Get pools
+## Get all pools
 
 ```shell
 curl "https://serum-api.bonfida.com/pools"
@@ -373,6 +373,58 @@ Provides data about Serum pools over the last 24 hours. A new data point is adde
 The following endpoint returns the most recent data points:
 
 `GET https://serum-api.bonfida.com/pools-recent`
+
+## Get pool
+
+```shell
+curl "https://serum-api.bonfida.com/pools/BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4/SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt?endTime=1605531090000&startTime=1605444690000&limit=100"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "USDT/SRM",
+      "pool_identifier": "2gJPRt8a9PNfjU4vFGtq4aH3ud1XY44tk9HvQVyF4eio",
+      "liquidity_locked": 1522372.655400426,
+      "apy": 1.1198276808045515,
+      "volume": 2465262.921672771,
+      "mints": [
+        "BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4",
+        "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt"
+      ],
+      "liquidityA": 760150.113927,
+      "liquidityAinUsd": 760150.113927,
+      "liquidityB": 588816.177268,
+      "liquidityBinUsd": 762222.5414734259,
+      "supply": 65.14360704,
+      "fees": 7395.788765018314,
+      "time": 1605529983607,
+      "volume24hA": 124930.352732,
+      "volume24hB": 98014.950623
+    }
+  ]
+}
+```
+
+Provides historical data about Serum pools
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/pools/{mintA}/{mintB}?startTime={startTime}&endTime={endTime}&limit={limit}`
+
+### URL Parameters
+
+| Parameter | Description                    |
+| --------- | ------------------------------ |
+| mintA     | Mint address A                 |
+| mintB     | Mint address B                 |
+| startTime | Optional (in ms)               |
+| endTime   | Optional (in ms)               |
+| limit     | Optional. Max and default 1000 |
 
 ## Get pool trades
 

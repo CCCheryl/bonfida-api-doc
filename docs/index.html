@@ -342,7 +342,13 @@
                     <a href="#get-pool-trades" class="toc-h2 toc-link" data-title="Get pool trades">Get pool trades</a>
                   </li>
                   <li>
-                    <a href="#get-pools-volume" class="toc-h2 toc-link" data-title="Get pools volume">Get pools volume</a>
+                    <a href="#get-pools-last-24h-volume" class="toc-h2 toc-link" data-title="Get pools last 24h volume">Get pools last 24h volume</a>
+                  </li>
+                  <li>
+                    <a href="#get-pools-historical-volume" class="toc-h2 toc-link" data-title="Get pools historical volume">Get pools historical volume</a>
+                  </li>
+                  <li>
+                    <a href="#get-pools-historical-liquidity" class="toc-h2 toc-link" data-title="Get pools historical liquidity">Get pools historical liquidity</a>
                   </li>
               </ul>
           </li>
@@ -816,7 +822,7 @@
 </tbody></table>
 
 <p>If no parameters are given it will return all trades from the last 24 hours</p>
-<h2 id='get-pools-volume'>Get pools volume</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools/volumes/recent"</span>
+<h2 id='get-pools-last-24h-volume'>Get pools last 24h volume</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools/volumes/recent"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -826,6 +832,117 @@
 <p>Provides a view of rolling 24 hour volume on the Serum Swap</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://serum-api.bonfida.com/pools/volumes/recent</code></p>
+<h2 id='get-pools-historical-volume'>Get pools historical volume</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools/volumes?mintA=9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw&amp;mintB=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&amp;endTime=1605605529000&amp;startTime=1605259529000&amp;limit=2"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mintA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">9838.425721988495</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605571200000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mintA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">5999.188775463499</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605484800000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mintA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">33847.21026596426</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605398400000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides historical volume data for pools.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/pools/volumes?mintA={mintA}&amp;mintB={mintB}&amp;endTime={endTime}&amp;startTime={startTime}&amp;limit={limit}</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mintA</td>
+<td>Mint address A</td>
+</tr>
+<tr>
+<td>mintB</td>
+<td>Mint address B</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Optional (in ms)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Optional (in ms)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Optional. Max and default 100</td>
+</tr>
+</tbody></table>
+<h2 id='get-pools-historical-liquidity'>Get pools historical liquidity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://serum-api.bonfida.com/pools/liquidity?mintA=9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw&amp;mintB=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&amp;endTime=1605605529000&amp;startTime=1605259529000&amp;limit=2"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mintA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityAinUsd"</span><span class="p">:</span><span class="w"> </span><span class="mf">624513.720168704</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityBinUsd"</span><span class="p">:</span><span class="w"> </span><span class="mf">620145.0892474919</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityA"</span><span class="p">:</span><span class="w"> </span><span class="mf">37.25022792401123</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidityB"</span><span class="p">:</span><span class="w"> </span><span class="mf">491481.99210968224</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605571200000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Provides historical volume data for pools.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET https://serum-api.bonfida.com/pools/liquidity?mintA={mintA}&amp;mintB={mintB}&amp;endTime={endTime}&amp;startTime={startTime}&amp;limit={limit}</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mintA</td>
+<td>Mint address A</td>
+</tr>
+<tr>
+<td>mintB</td>
+<td>Mint address B</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Optional (in ms)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Optional (in ms)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Optional. Max and default 100</td>
+</tr>
+</tbody></table>
 <h1 id='exchanges'>Exchanges</h1>
 <p>REST endpoint URL: <code>https://bonfida.com/api</code></p>
 <h2 id='get-order-placement-latencies'>Get order placement latencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/latency-order"</span>
@@ -848,7 +965,7 @@
 <li>AWS Dublin: <code>https://dublin.bonfida.com/api/latency-order</code></li>
 <li>AWS Virginia: <code>https://virginia.bonfida.com/api/latency-order</code></li>
 </ul>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/latency-order</code></p>
 <h2 id='get-open-interests'>Get open interests</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/open-interest"</span>
 </code></pre></div>
@@ -882,7 +999,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>Returns the open interest of Deribit, Bybit, Okex and FTX.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/open-interest</code></p>
 <h2 id='get-btc-implied-volatility'>Get BTC implied volatility</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/vol/today"</span>
 </code></pre></div>
@@ -892,9 +1009,9 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mf">0.6514701843261719</span><span class="w">
 </span></code></pre></div>
 <p>Returns the BTC implied volatility.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/vol/{time}</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -914,9 +1031,9 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"longRatio"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4852245862884161</span><span class="p">,</span><span class="w"> </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604805231</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns long and short ratios for the specified exchange and specified market</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bonfida.com/api/long-short-ratio?exchange={exchange}&amp;market={market}</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>

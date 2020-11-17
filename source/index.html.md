@@ -469,7 +469,7 @@ Provides a list of all trades fills from the last 24 hours on the Serum Swap
 
 If no parameters are given it will return all trades from the last 24 hours
 
-## Get pools volume
+## Get pools last 24h volume
 
 ```shell
 curl "https://serum-api.bonfida.com/pools/volumes/recent"
@@ -486,6 +486,97 @@ Provides a view of rolling 24 hour volume on the Serum Swap
 ### HTTP Request
 
 `GET https://serum-api.bonfida.com/pools/volumes/recent`
+
+## Get pools historical volume
+
+```shell
+curl "https://serum-api.bonfida.com/pools/volumes?mintA=9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw&mintB=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&endTime=1605605529000&startTime=1605259529000&limit=2"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "mintA": "9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw",
+      "mintB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "volume": 9838.425721988495,
+      "time": 1605571200000
+    },
+    {
+      "mintA": "9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw",
+      "mintB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "volume": 5999.188775463499,
+      "time": 1605484800000
+    },
+    {
+      "mintA": "9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw",
+      "mintB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "volume": 33847.21026596426,
+      "time": 1605398400000
+    }
+  ]
+}
+```
+
+Provides historical volume data for pools.
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/pools/volumes?mintA={mintA}&mintB={mintB}&endTime={endTime}&startTime={startTime}&limit={limit}`
+
+### URL Parameters
+
+| Parameter | Description                   |
+| --------- | ----------------------------- |
+| mintA     | Mint address A                |
+| mintB     | Mint address B                |
+| startTime | Optional (in ms)              |
+| endTime   | Optional (in ms)              |
+| limit     | Optional. Max and default 100 |
+
+## Get pools historical liquidity
+
+```shell
+curl "https://serum-api.bonfida.com/pools/liquidity?mintA=9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw&mintB=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&endTime=1605605529000&startTime=1605259529000&limit=2"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "mintA": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+      "mintB": "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt",
+      "liquidityAinUsd": 624513.720168704,
+      "liquidityBinUsd": 620145.0892474919,
+      "liquidityA": 37.25022792401123,
+      "liquidityB": 491481.99210968224,
+      "time": 1605571200000
+    }
+  ]
+}
+```
+
+Provides historical volume data for pools.
+
+### HTTP Request
+
+`GET https://serum-api.bonfida.com/pools/liquidity?mintA={mintA}&mintB={mintB}&endTime={endTime}&startTime={startTime}&limit={limit}`
+
+### URL Parameters
+
+| Parameter | Description                   |
+| --------- | ----------------------------- |
+| mintA     | Mint address A                |
+| mintB     | Mint address B                |
+| startTime | Optional (in ms)              |
+| endTime   | Optional (in ms)              |
+| limit     | Optional. Max and default 100 |
 
 # Exchanges
 

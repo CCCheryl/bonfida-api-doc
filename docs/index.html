@@ -350,6 +350,9 @@
                   <li>
                     <a href="#get-pools-historical-liquidity" class="toc-h2 toc-link" data-title="Get pools historical liquidity">Get pools historical liquidity</a>
                   </li>
+                  <li>
+                    <a href="#trading-view" class="toc-h2 toc-link" data-title="Trading View">Trading View</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -943,7 +946,24 @@
 <td>Optional. Max and default 100</td>
 </tr>
 </tbody></table>
-<h1 id='exchanges'>Exchanges</h1>
+<h2 id='trading-view'>Trading View</h2>
+<p>Bonfida built an API that follows TradingView UDF specifications. This means that Bonfida API can be used out of the box with any TradingView widget. You simply need to use <code>https://serum-api.bonfida.com/tv</code> for the <code>datafeedUrl</code> field in the TradingView widget constructor.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">defaultProps</span><span class="p">:</span> <span class="nx">ChartContainerProps</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="na">datafeedUrl</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://serum-api.bonfida.com/tv</span><span class="dl">"</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">widgetOptions</span><span class="p">:</span> <span class="nx">ChartingLibraryWidgetOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="na">datafeed</span><span class="p">:</span> <span class="k">new</span> <span class="p">(</span><span class="nb">window</span> <span class="k">as</span> <span class="kr">any</span><span class="p">).</span><span class="nx">Datafeeds</span><span class="p">.</span><span class="nx">UDFCompatibleDatafeed</span><span class="p">(</span>
+    <span class="nx">defaultProps</span><span class="p">.</span><span class="nx">datafeedUrl</span>
+  <span class="p">)</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">tvWidget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">widget</span><span class="p">(</span><span class="nx">widgetOptions</span><span class="p">);</span>
+</code></pre></div><h1 id='exchanges'>Exchanges</h1>
 <p>REST endpoint URL: <code>https://bonfida.com/api</code></p>
 <h2 id='get-order-placement-latencies'>Get order placement latencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bonfida.com/api/latency-order"</span>
 </code></pre></div>

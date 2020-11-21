@@ -578,6 +578,28 @@ Provides historical volume data for pools.
 | endTime   | Optional (in ms)              |
 | limit     | Optional. Max and default 100 |
 
+## Trading View
+
+Bonfida built an API that follows TradingView UDF specifications. This means that Bonfida API can be used out of the box with any TradingView widget. You simply need to use `https://serum-api.bonfida.com/tv` for the `datafeedUrl` field in the TradingView widget constructor.
+
+```typescript
+const defaultProps: ChartContainerProps = {
+  // ...
+  datafeedUrl: "https://serum-api.bonfida.com/tv"
+  // ...
+};
+
+const widgetOptions: ChartingLibraryWidgetOptions = {
+  // ...
+  datafeed: new (window as any).Datafeeds.UDFCompatibleDatafeed(
+    defaultProps.datafeedUrl
+  )
+  // ...
+};
+
+const tvWidget = new widget(widgetOptions);
+```
+
 # Exchanges
 
 REST endpoint URL: `https://bonfida.com/api`

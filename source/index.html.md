@@ -364,7 +364,7 @@ curl "https://serum-api.bonfida.com/pools"
 }
 ```
 
-Provides data about Serum pools over the last 24 hours. A new data point is added every 30 minutes for each pool.
+Provides data about Serum pools over the last 6 hours. A new data point is added every 30 minutes for each pool.
 
 ### HTTP Request
 

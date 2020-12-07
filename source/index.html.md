@@ -14,25 +14,26 @@ search: true
 code_clipboard: true
 ---
 
-# Introduction
+# 介绍
 
-Welcome to the Bonfida API! You can use our API to access [Serum DEX](https://projectserum.com) data and other crypto market analytics.
+欢迎使用Bonfida API！您可以通过我们的API来访问Serum Dex的数据库以及其它加密市场的分析。
 
-The current rate limit is 30 requests per second - please reach out if you’re building something and need a higher limit.
 
-# Project Serum
+目前的API访问频率限制是每秒30个请求 - 如果您搭建的项目需要更高的限制，请与我们联系。
 
-For more information about Serum visit [Project Serum](https://projectserum.com)
+# Serum项目
 
-REST endpoint URL: `https://serum-api.bonfida.com`
+更多关于Serum的信息请访问[Serum项目](https://projectserum.com)
 
-## Get all pairs
+REST 接口 URL: `https://serum-api.bonfida.com`
+
+## 获取所有交易对
 
 ```shell
 curl "https://serum-api.bonfida.com/pairs"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -50,19 +51,19 @@ curl "https://serum-api.bonfida.com/pairs"
 }
 ```
 
-Provides a list of all trading pairs on the Serum DEX.
+提供Serum DEX上所有交易对列表。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/pairs`
 
-## Get recent trades by market name
+## 获取最新成交信息（按交易对查询）
 
 ```shell
 curl "https://serum-api.bonfida.com/trades/ETHUSDT"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -82,25 +83,25 @@ curl "https://serum-api.bonfida.com/trades/ETHUSDT"
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX.
+提供过去24小时中Serum DEX上所有的市场信息。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/trades/{marketName}`
 
-### URL Parameters
+### URL参数
 
-| Parameter  | Description                                           |
+|     参数   | 描述                                         |
 | ---------- | ----------------------------------------------------- |
-| marketName | The name of the market you want to retrieve data from |
+| marketName | 您想要进行数据检索的市场名称                     |
 
-## Get recent trades by market address
+## 根据市场地址获取最新的交易信息
 
 ```shell
 curl "https://serum-api.bonfida.com/trades/address/5abZGhrELnUnfM9ZUnvK6XJPoBU5eShZwfFPkdhAC7o"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -120,17 +121,16 @@ curl "https://serum-api.bonfida.com/trades/address/5abZGhrELnUnfM9ZUnvK6XJPoBU5e
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX.
+提供过去24小时中Serum DEX上所有的市场信息。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/trades/address/{marketAddress}`
 
-### URL Parameters
-
-| Parameter     | Description                                       |
+### URL参数
+|      参数     | 描述                                         |
 | ------------- | ------------------------------------------------- |
-| marketAddress | The market address you want to retrieve data from |
+| marketAddress | 您想要进行数据检索的市场地址                   |
 
 ## Get all recent trades
 
@@ -138,7 +138,7 @@ Provides a list of all market fills from the last 24 hours on the Serum DEX.
 curl "https://serum-api.bonfida.com/trades"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -158,19 +158,19 @@ curl "https://serum-api.bonfida.com/trades"
 }
 ```
 
-Provides a list of all market fills from the last 24 hours on the Serum DEX.
+提供过去24小时中Serum DEX上所有的市场信息。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/trades`
 
-## Get volume
+## 获取交易量
 
 ```shell
 curl "https://serum-api.bonfida.com/volumes/ETHUSDT"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -184,25 +184,25 @@ curl "https://serum-api.bonfida.com/volumes/ETHUSDT"
 }
 ```
 
-Provides a view of rolling 24 hour volume on the Serum DEX - use ‘all’ as the market for an aggregate of traded volume across all markets.
+实时观察Serum DEX上24小时滚动交易量 - 使用‘所有’作为所有市场交易量合计的市场
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/volumes/{marketName}`
 
-### URL Parameters
+### URL参数
 
-| Parameter  | Description                                           |
+| 参数       | 描述                                           |
 | ---------- | ----------------------------------------------------- |
-| marketName | The name of the market you want to retrieve data from |
+| marketName | 您想要进行数据检索的市场名称                       |
 
-## Get orderbook
+## 获取订单簿
 
 ```shell
 curl "https://serum-api.bonfida.com/orderbooks/ETHUSDT"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -268,17 +268,18 @@ curl "https://serum-api.bonfida.com/orderbooks/ETHUSDT"
 }
 ```
 
-Provides the current orderbook of the market.
+提供过去24小时中Serum DEX上所有的市场信息。
+ 
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/orderbooks/{marketName}`
 
-### URL Parameters
+### URL参数
 
-| Parameter  | Description                                           |
+| 参数  | 描述                                           |
 | ---------- | ----------------------------------------------------- |
-| marketName | The name of the market you want to retrieve data from |
+| marketName | 您想要进行数据检索的市场名称 |
 
 ## Get historical prices
 
@@ -286,7 +287,7 @@ Provides the current orderbook of the market.
 curl "https://serum-api.bonfida.com/candles/BTCUSDC?resolution=3600"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -316,27 +317,27 @@ curl "https://serum-api.bonfida.com/candles/BTCUSDC?resolution=3600"
 }
 ```
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/candles/{marketName}?resolution={resolution}&startTime={startTime}&endTime={endTime}&limit={limit}`
 
-### URL Parameters
+### URL参数
 
-| Parameter  | Description                                               |
+| 参数       | 描述                                               |
 | ---------- | --------------------------------------------------------- |
-| marketName | The name of the market you want to retrieve data from     |
-| resolution | Window length in seconds. options: 60, 3600, 14400, 86400 |
-| startTime  | Optional (in ms)                                          |
-| endTime    | Optional (in ms)                                          |
-| limit      | Optional. Max and default 1000                            |
+| marketName | 您想要进行数据检索的市场名称     |
+| resolution | 分辨率，每秒窗口长度。选项：60、3600、14400、86400 |
+| startTime  | 开始时间，可选项（毫秒）                                          |
+| endTime    | 结束时间，可选项（毫秒）                                          |
+| limit      | 限制，可选项，最大值默认为1000。                           |
 
-## Get all pools
+## 获取所有资金池
 
 ```shell
 curl "https://serum-api.bonfida.com/pools"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -364,23 +365,23 @@ curl "https://serum-api.bonfida.com/pools"
 }
 ```
 
-Provides data about Serum pools over the last 6 hours. A new data point is added every 30 minutes for each pool.
+提供过去6小时Serum资金池的数据信息。每个资金池每隔三十分钟会增加一个新的数据点。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/pools`
 
-The following endpoint returns the most recent data points:
+以下接口返回最新的数据点:
 
 `GET https://serum-api.bonfida.com/pools-recent`
 
-## Get pool
+## 获取资金池信息
 
 ```shell
 curl "https://serum-api.bonfida.com/pools/BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4/SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt?endTime=1605531090000&startTime=1605444690000&limit=100"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -410,29 +411,29 @@ curl "https://serum-api.bonfida.com/pools/BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iB
 }
 ```
 
-Provides historical data about Serum pools
+获取Serum资金池的历史数据。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/pools/{mintA}/{mintB}?startTime={startTime}&endTime={endTime}&limit={limit}`
 
-### URL Parameters
+### URL参数
 
-| Parameter | Description                    |
+| 参数      | 描述                    |
 | --------- | ------------------------------ |
-| mintA     | Mint address A                 |
-| mintB     | Mint address B                 |
-| startTime | Optional (in ms)               |
-| endTime   | Optional (in ms)               |
-| limit     | Optional. Max and default 1000 |
+| mintA     | Mint address A 铸造地址A                |
+| mintB     | Mint address B  铸造地址B               |
+| startTime | 可选项（毫秒）             |
+| endTime   | 可选项（毫秒）               |
+| limit     | 可选项。最大默认值为1000 |
 
-## Get pool trades
+## 获取资金池交易信息
 
 ```shell
 curl "https://serum-api.bonfida.com/pools/trades?symbolSource=BTC&symbolDestination=USDC&bothDirections=true"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -453,47 +454,47 @@ curl "https://serum-api.bonfida.com/pools/trades?symbolSource=BTC&symbolDestinat
 }
 ```
 
-Provides a list of all trades fills from the last 24 hours on the Serum Swap
+提供过去24小时Serum Swap上所有交易信息列表
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/pools/trades`
 
-### URL Parameters
+### URL参数
 
-| Parameter         | Description                                        |
+| 参数           | 描述                                        |
 | ----------------- | -------------------------------------------------- |
-| symbolSource      | `optional` Source coin of the swap                 |
-| symbolDestination | `optional` Destination coin of the swap            |
-| bothDirections    | `optional` To retrieve trades from both directions |
+| symbolSource      | `optional` 可选项，来源为Swap的通证                 |
+| symbolDestination | `optional` 可选项，目标为Swap的通证            |
+| bothDirections    | `optional` 可选项，双向进行交易检索     |
 
-If no parameters are given it will return all trades from the last 24 hours
+如果没有提供参数，将返回过去24小时中的所有交易
 
-## Get pools last 24h volume
+## 获取过去24小时资金池交易量 
 
 ```shell
 curl "https://serum-api.bonfida.com/pools/volumes/recent"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 { "success": true, "data": [{ "volume": 408399.18767858105 }] }
 ```
 
-Provides a view of rolling 24 hour volume on the Serum Swap
+实时观测Serum DEX上24小时滚动交易量
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/pools/volumes/recent`
 
-## Get pools historical volume
+## 获取资金池历史交易量
 
 ```shell
 curl "https://serum-api.bonfida.com/pools/volumes?mintA=9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw&mintB=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&endTime=1605605529000&startTime=1605259529000&limit=2"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -521,29 +522,29 @@ curl "https://serum-api.bonfida.com/pools/volumes?mintA=9S4t2NEAiJVMvPdRYKVrfJpB
 }
 ```
 
-Provides historical volume data for pools.
+提供资金池历史交易量数据。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://serum-api.bonfida.com/pools/volumes?mintA={mintA}&mintB={mintB}&endTime={endTime}&startTime={startTime}&limit={limit}`
 
-### URL Parameters
+### URL参数
 
-| Parameter | Description                   |
+| 参数      | 描述                   |
 | --------- | ----------------------------- |
-| mintA     | Mint address A                |
-| mintB     | Mint address B                |
-| startTime | Optional (in ms)              |
-| endTime   | Optional (in ms)              |
-| limit     | Optional. Max and default 100 |
+| mintA     | Mint address A  铸造地址A              |
+| mintB     | Mint address B  铸造地址B              |
+| startTime | 可选项（毫秒）              |
+| endTime   | 可选项（毫秒）              |
+| limit     | 可选项。最大默认值为100     |
 
-## Get pools historical liquidity
+## 获取资金池历史流动性
 
 ```shell
 curl "https://serum-api.bonfida.com/pools/liquidity?mintA=9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw&mintB=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&endTime=1605605529000&startTime=1605259529000&limit=2"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 {
@@ -562,25 +563,24 @@ curl "https://serum-api.bonfida.com/pools/liquidity?mintA=9S4t2NEAiJVMvPdRYKVrfJ
 }
 ```
 
-Provides historical volume data for pools.
+提供资金池历史交易量数据。
 
-### HTTP Request
-
+### HTTP请求
 `GET https://serum-api.bonfida.com/pools/liquidity?mintA={mintA}&mintB={mintB}&endTime={endTime}&startTime={startTime}&limit={limit}`
 
-### URL Parameters
+### URL参数
 
-| Parameter | Description                   |
+| 参数      | 描述                   |
 | --------- | ----------------------------- |
-| mintA     | Mint address A                |
-| mintB     | Mint address B                |
-| startTime | Optional (in ms)              |
-| endTime   | Optional (in ms)              |
-| limit     | Optional. Max and default 100 |
+| mintA     | Mint address A  铸造地址A              |
+| mintB     | Mint address B  铸造地址B              |
+| startTime | 可选项（毫秒）              |
+| endTime   | 可选项（毫秒）              |
+| limit     | 可选项。最大默认值为100       |   
 
 ## Trading View
 
-Bonfida built an API that follows TradingView UDF specifications. This means that Bonfida API can be used out of the box with any TradingView widget. You simply need to use `https://serum-api.bonfida.com/tv` for the `datafeedUrl` field in the TradingView widget constructor.
+Bonfida API接口的搭建是遵循了TradingView UDF（通用数据反馈）的规范。这意味着BonfidaAPI可以适用于任何TradingView的部件。您只需使用 `https://serum-api.bonfida.com/tv` 来获取TradingView里的部件构造函数 `datafeedUrl`文档.
 
 ```typescript
 const defaultProps: ChartContainerProps = {
@@ -600,17 +600,17 @@ const widgetOptions: ChartingLibraryWidgetOptions = {
 const tvWidget = new widget(widgetOptions);
 ```
 
-# Exchanges
+# 交易所
 
 REST endpoint URL: `https://bonfida.com/api`
 
-## Get order placement latencies
+## 获取下单延迟信息
 
 ```shell
 curl "https://bonfida.com/api/latency-order"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 [
@@ -621,24 +621,25 @@ curl "https://bonfida.com/api/latency-order"
 ]
 ```
 
-Returns the last latency measured for order placement through REST API for Bybit, FTX, Binance and Bitmex. The latency is measured from `AWS Tokyo`.
+通过Bybit、FTX、Binance、Bitmex的REST API下单接口的返回，监测出交易所最新延迟信息。延迟信息从`AWS Tokyo`进行监测。
 
-The following endpoints measure from different AWS locations:
 
-- AWS Dublin: `https://dublin.bonfida.com/api/latency-order`
-- AWS Virginia: `https://virginia.bonfida.com/api/latency-order`
+以下接口从不同AWS地址进行监测:
 
-### HTTP Request
+- AWS 都柏林: `https://dublin.bonfida.com/api/latency-order`
+- AWS 弗吉尼亚: `https://virginia.bonfida.com/api/latency-order`
+
+### HTTP请求
 
 `GET https://bonfida.com/api/latency-order`
 
-## Get open interests
+## 获取未平仓合约信息
 
 ```shell
 curl "https://bonfida.com/api/open-interest"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 [
@@ -668,57 +669,57 @@ curl "https://bonfida.com/api/open-interest"
 ]
 ```
 
-Returns the open interest of Deribit, Bybit, Okex and FTX.
+返回Deribit、Bybit、Okex、FTX上的当前持仓量。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://bonfida.com/api/open-interest`
 
-## Get BTC implied volatility
+## 获取比特币的隐含波动率
 
 ```shell
 curl "https://bonfida.com/api/vol/today"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 0.6514701843261719
 ```
 
-Returns the BTC implied volatility.
+返回比特币隐含波动率。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://bonfida.com/api/vol/{time}`
 
-### URL Parameters
+### URL参数
 
-| Parameter | Description                                   |
+| 参数      | 描述                                   |
 | --------- | --------------------------------------------- |
-| time      | `today`, `tomorrow`, `this-week`, `next-week` |
+| time      | `当日`, `次日`, `当周`, `次周` |
 
-## Get long and short ratios
+## 获取多空比
 
 ```shell
 curl "https://bonfida.com/api/long-short-ratio?exchange=ftx&market=BTC-PERP"
 ```
 
-> The above command returns JSON structured like this:
+> 上述指令得到的JSON格式的返回如下:
 
 ```json
 { "longRatio": 0.4852245862884161, "lastUpdate": 1604805231 }
 ```
 
-Returns long and short ratios for the specified exchange and specified market
+返回指定交易所和指定市场的多空比。
 
-### HTTP Request
+### HTTP请求
 
 `GET https://bonfida.com/api/long-short-ratio?exchange={exchange}&market={market}`
 
-### URL Parameters
+### URL参数
 
-| Parameter | Description                                                                                |
+| 参数      | 描述                                                                                |
 | --------- | ------------------------------------------------------------------------------------------ |
-| exchange  | Exchange from which you want the ratio (only FTX, Bybit, Binance and Phemex are supported) |
-| market    | market from which you want the ratio (e.g BTC-PERP)                                        |
+| exchange  | 您想要获取比率的交易所（仅支持FTX、Bybit、Binance、Phemex） |
+| market    | 您想要获取比率的市场（例如： BTC-PERP）                                        |
